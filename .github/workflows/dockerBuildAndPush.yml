@@ -1,8 +1,10 @@
 name: Build Maven Project and Push Docker Image
 
 on:
+
+  workflow_dispatch:
   push:
-   
+
 
 jobs:
   build:
