@@ -49,8 +49,8 @@ jobs:
       - name: Test service URLs
         run: |
           minikube service list
-          minikube service demo-k8s-service --url
+          minikube service java-app --url
           echo "------------------opening the service------------------"
-          curl $(minikube service demo-k8s-service --url)
+          curl $(minikube service java-app --url)
 
 
