@@ -58,6 +58,8 @@ jobs:
         run: kubectl get services -o wide
       - name: LOGS
         run: kubectl describe pods
+      - name: LOGS
+        run: kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'
       - name: Test service URLs
         run: |
           minikube service list
