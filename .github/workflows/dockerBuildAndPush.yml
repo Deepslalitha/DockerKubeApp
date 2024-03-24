@@ -52,7 +52,8 @@ jobs:
             docker images
       - name: Deploy to Minikube
         run: kubectl apply -f deploy-to-minikube.yaml
-
+      - name: LOGS
+        run: minikube logs --file=logs.txt
       - name: Test service URLs
         run: |
           minikube service list

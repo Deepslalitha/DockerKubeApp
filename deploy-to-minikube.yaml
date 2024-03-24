@@ -17,7 +17,6 @@ spec:
     spec:
       containers:
         - name: java-app
-          imagePullPolicy: Never
           image: "deepthylalithatech/mydemoapp:1.0.0"
           ports:
             - containerPort: 8080
