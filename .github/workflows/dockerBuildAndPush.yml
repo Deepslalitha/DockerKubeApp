@@ -53,7 +53,9 @@ jobs:
       - name: Deploy to Minikube
         run: kubectl apply -f deploy-to-minikube.yaml
       - name: LOGS
-        run: minikube logs --file=logs.txt
+        run: kubectl get pods -o wide
+      - name: LOGS
+        run: kubectl get services -o wide
       - name: Test service URLs
         run: |
           minikube service list
