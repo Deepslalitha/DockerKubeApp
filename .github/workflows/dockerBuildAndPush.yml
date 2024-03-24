@@ -56,6 +56,8 @@ jobs:
         run: kubectl get pods -o wide
       - name: LOGS
         run: kubectl get services -o wide
+      - name: LOGS
+        run: kubectl describe pods
       - name: Test service URLs
         run: |
           minikube service list
