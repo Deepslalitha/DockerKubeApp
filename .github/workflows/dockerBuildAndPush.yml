@@ -31,14 +31,14 @@ jobs:
 
       - name: Tag and push Docker image
         run: |
-             export SHELL=/bin/bash
-             eval $(minikube -p minikube docker-env)
-             docker build -t deepthylalithatech/mydemoapp:1.0.0 .
-             echo -n "verifying images:"
-             docker images
-             docker push deepthylalithatech/mydemoapp:1.0.0
+          
+            docker build -t deepthylalithatech/mydemoapp:1.0.0 .
+            docker push deepthylalithatech/mydemoapp:1.0.0
 
-
+      - name: Start minikube
+        uses: medyagh/setup-minikube@master
+      - name: Try the cluster !
+        run: kubectl get pods -A
       - name: Deploy to Minikube
         run: kubectl apply -f deploy-to-minikube.yaml
 
