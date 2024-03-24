@@ -34,4 +34,14 @@ jobs:
             docker build -t deepthylalithatech/mydemoapp:1.0.0 .
             docker push deepthylalithatech/mydemoapp:1.0.0
 
+      - name: Deploy to Minikube
+        run: kubectl apply -f deploy-to-minikube.yaml
+
+      - name: Test service URLs
+        run: |
+          minikube service list
+          minikube service example --url
+          echo "------------------opening the service------------------"
+          curl $(minikube service example --url)
+
     
