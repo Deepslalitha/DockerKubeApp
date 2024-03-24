@@ -43,6 +43,9 @@ jobs:
           driver: docker
       - name: Try the cluster !
         run: kubectl get pods -A
+      - name: Load Docker image into Minikube
+        run: |
+                 minikube ssh -- sudo docker load -i <(docker save deepthylalithatech/mydemoapp:1.0.0)
       - name: Deploy to Minikube
         run: kubectl apply -f deploy-to-minikube.yaml
 
