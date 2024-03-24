@@ -36,7 +36,11 @@ jobs:
             docker push deepthylalithatech/mydemoapp:1.0.0
 
       - name: Start minikube
-        uses: medyagh/setup-minikube@master
+        id: minikube
+        uses: medyagh/setup-minikube@latest
+        with:
+      
+          driver: docker
       - name: Try the cluster !
         run: kubectl get pods -A
       - name: Deploy to Minikube

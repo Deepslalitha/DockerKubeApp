@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mydemoapp
+  name: demo-deployment
 spec:
   selector:
     matchLabels:
@@ -29,7 +29,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mydemoapp
+  name: demo-k8s-service
 spec:
   type: NodePort
   selector:
