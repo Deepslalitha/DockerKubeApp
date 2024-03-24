@@ -31,8 +31,12 @@ jobs:
 
       - name: Tag and push Docker image
         run: |
-            docker build -t deepthylalithatech/mydemoapp:1.0.0 .
-            docker push deepthylalithatech/mydemoapp:1.0.0
+             export SHELL=/bin/bash
+             eval $(minikube -p minikube docker-env)
+             docker build -t deepthylalithatech/mydemoapp:1.0.0 .
+             echo -n "verifying images:"
+             docker images
+             docker push deepthylalithatech/mydemoapp:1.0.0
 
 
       - name: Deploy to Minikube
