@@ -39,7 +39,7 @@ jobs:
         id: minikube
         uses: medyagh/setup-minikube@latest
         with:
-      
+
           driver: docker
       - name: Try the cluster !
         run: kubectl get pods -A
@@ -49,8 +49,8 @@ jobs:
       - name: Test service URLs
         run: |
           minikube service list
-          minikube service mydemoapp --url
+          minikube service demo-k8s-service --url
           echo "------------------opening the service------------------"
-          curl $(minikube service mydemoapp --url)
+          curl $(minikube service demo-k8s-service --url)
 
 
