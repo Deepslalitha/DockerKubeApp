@@ -27,7 +27,7 @@ metadata:
   name: java-app
   namespace: default
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: java-app
   ports:
