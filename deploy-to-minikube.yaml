@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: java-app
-          image: "deepthylalithatech/mydemoapp:1.0.0"
+          image: "deepthylalithatech/mydemoapp:1.1.0"
           ports:
             - containerPort: 8080
 ---
