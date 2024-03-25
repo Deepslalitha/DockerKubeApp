@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String index() {
         return "Myfirst Docker APPPPPPP!";
     }
