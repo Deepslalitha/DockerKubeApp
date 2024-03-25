@@ -60,6 +60,15 @@ jobs:
         run: kubectl describe pods
       - name: LOGS
         run: kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'
+      - name: LOGS
+        run:  minikube logs --file=logs.txt
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+            name: logs
+            path: logs.txt
+            retention-days: 5
       - name: Test service URLs
         run: |
           minikube service list
