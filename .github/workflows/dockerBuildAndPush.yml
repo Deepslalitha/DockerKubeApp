@@ -52,13 +52,13 @@ jobs:
             docker images
       - name: Deploy to Minikube
         run: kubectl apply -f deploy-to-minikube.yaml
-      - name: LOGS
+      - name: Get the pods
         run: kubectl get pods -o wide
-      - name: LOGS
+      - name: get services
         run: kubectl get services -o wide
-      - name: LOGS
+      - name: describe pods
         run: kubectl describe pods
-      - name: LOGS
+      - name: events
         run: kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'
       - name: LOGS
         run:  minikube logs --file=logs.txt
