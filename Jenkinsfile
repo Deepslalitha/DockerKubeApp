@@ -7,7 +7,9 @@ pipeline {
     }
     environment {
         DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')
-        imagename = "deepthylalithatech/mydemoapp"
+        registry = "deepthylalithatech/mydemoapp"
+        registryCredential = 'dockerhub_id'
+        dockerImage = ''
     }
     stages {
     stage ('Initialize') {
@@ -38,7 +40,11 @@ pipeline {
     }
        stage('Build Docker Image') {
              steps{
-            	dockerImage = docker.build imagename
+             script {
+                        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                          echo 'Build Image Completed'
+                        }
+            //	dockerImage = docker.build imagename
                echo 'Build Image Completed'
              }
            }
