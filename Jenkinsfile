@@ -28,12 +28,7 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
                 }
             }
-        stage('Build Docker Image') {
-            steps{
-        	sh 'sudo docker build -t <dockerhubusername>/<dockerhubreponame>:$BUILD_NUMBER .'
-        	echo 'Build Image Completed'
-            }
-        }
+       
        stage('Build Docker Image') {
              steps{
        	sh 'sudo docker build -t deepthylalithatech/mydemoapp:$BUILD_NUMBER .'
