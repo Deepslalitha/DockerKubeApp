@@ -38,7 +38,14 @@ pipeline {
 
       }
     }
-       stage('Build Docker Image') {
+    stage('Build Docker Image') {
+                 steps{
+                 sudo docker run hello-world
+                //	dockerImage = docker.build imagename
+                   echo 'Build Image Completed'
+                 }
+               }
+     /* stage('Build Docker Image') {
              steps{
              script {
                         dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -48,7 +55,7 @@ pipeline {
                echo 'Build Image Completed'
              }
            }
-        /*stage('Login to Docker Hub') {
+        stage('Login to Docker Hub') {
              steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 echo 'Login Completed'
