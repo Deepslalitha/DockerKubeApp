@@ -8,7 +8,7 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')
         registry = "deepthylalithatech/mydemoapp"
-        registryCredential = 'dockerhub_id'
+        registryCredential = 'dockerhubcredentials'
         dockerImage = ''
     }
     stages {
@@ -49,15 +49,22 @@ pipeline {
                echo 'Build Image Completed'
              }
            }
-        stage('Login to Docker Hub') {
+       /* stage('Login to Docker Hub') {
              steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 echo 'Login Completed'
              }
-           }
+           }*/
         stage('Push Image to Docker Hub') {
              steps{
-            	sh ' docker push deepthylalithatech/mydemoapp:$BUILD_NUMBER'
+             script {
+
+                           docker.withRegistry( '', registryCredential ) {
+                           dockerImage.push()
+
+                    }
+
+                
        	        echo 'Push Image Completed'
              }
            }
