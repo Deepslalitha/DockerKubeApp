@@ -64,7 +64,7 @@ pipeline {
 
                     }
 
-                
+                } 
        	        echo 'Push Image Completed'
              }
            }
