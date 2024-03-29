@@ -1,16 +1,11 @@
-#!groovy
+/* Requires the Docker Pipeline plugin */
 pipeline {
-    agent none
-   stages {
-    stage('Maven Install') {
-      agent {
-       docker {
-         image 'maven:3.5.0'
-     }
-  }
-  steps {
-       sh 'mvn clean install'
-       }
-     }
-   }
- }
+    agent { docker { image 'maven:3.9.6-eclipse-temurin-17-alpine' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
+}
