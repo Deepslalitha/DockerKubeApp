@@ -28,7 +28,13 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
                 }
             }
+ stages {
+    stage('Cloning Git') {
+      steps {
+        git([url: 'https://github.com/Deepslalitha/DockerKubeApp.git', branch: 'feature/DevopsAssignment'])
 
+      }
+    }
        stage('Build Docker Image') {
              steps{
             	sh ' docker build -t deepthylalithatech/mydemoapp:$BUILD_NUMBER .'
