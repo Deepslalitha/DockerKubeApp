@@ -40,7 +40,7 @@ pipeline {
     }
     stage('Build Docker Image') {
                  steps{
-                 sudo docker run hello-world
+                sh  'sudo docker run hello-world'
                 //	dockerImage = docker.build imagename
                    echo 'Build Image Completed'
                  }
