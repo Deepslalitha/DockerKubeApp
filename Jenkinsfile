@@ -54,7 +54,7 @@ pipeline {
        	        echo 'Push Image Completed'
              }
            }
-
+*/
 
     }//stages
 
