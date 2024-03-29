@@ -7,6 +7,7 @@ pipeline {
     }
     environment {
         DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')
+        imagename = "deepthylalithatech/mydemoapp"
     }
     stages {
     stage ('Initialize') {
@@ -37,11 +38,11 @@ pipeline {
     }
        stage('Build Docker Image') {
              steps{
-            	sh ' docker build -t deepthylalithatech/mydemoapp:$BUILD_NUMBER .'
+            	dockerImage = docker.build imagename
                echo 'Build Image Completed'
              }
            }
-        stage('Login to Docker Hub') {
+        /*stage('Login to Docker Hub') {
              steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 echo 'Login Completed'
