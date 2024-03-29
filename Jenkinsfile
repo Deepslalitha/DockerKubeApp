@@ -28,7 +28,7 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
                 }
             }
- stages {
+
     stage('Cloning Git') {
       steps {
         git([url: 'https://github.com/Deepslalitha/DockerKubeApp.git', branch: 'feature/DevopsAssignment'])
