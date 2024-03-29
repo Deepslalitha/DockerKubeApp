@@ -38,14 +38,8 @@ pipeline {
 
       }
     }
-    stage('Build Docker Image') {
-                 steps{
-                sh  'sudo docker run hello-world'
-                //	dockerImage = docker.build imagename
-                   echo 'Build Image Completed'
-                 }
-               }
-     /* stage('Build Docker Image') {
+
+     stage('Build Docker Image') {
              steps{
              script {
                         dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -67,7 +61,7 @@ pipeline {
        	        echo 'Push Image Completed'
              }
            }
-*/
+
 
     }//stages
 
