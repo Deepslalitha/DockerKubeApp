@@ -9,7 +9,7 @@ public class DemoController {
 
     @GetMapping("/")
     public String home() {
-        return "This is a Test Project for Jenkins- Docker-Kube";
+        return "Myfirst Docker APPPPPPP!";
     }
 
 
