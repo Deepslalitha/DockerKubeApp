@@ -1,6 +1,13 @@
-Assignment:
+Thos Repo has
+1. A static API build in Spring Boot
+2. Docker File - To create an image
+3. Kube deployment and Service files
+4. Jenkins file - That has different stages
+   a. Build
+   b. Test
+   c. Create Docker Image
+   d. Push to Docker Hub
+   e. Deploy to MiniKube
+   f. Test the Service
 
-As part of Implementing CI/CD pipeline , the below steps were carried out .
-
-1. Build a Spring boot application that points to a  static text on the
-   l
+5. Git Hub Workflows that uses git hub actions for build, deploy and test.
