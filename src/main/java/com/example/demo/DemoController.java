@@ -8,7 +8,7 @@ public class DemoController {
 
 
     @GetMapping("/")
-    public String index() {
+    public String home() {
         return "This is a Test Project for Jenkins- Docker-Kube";
     }
 
