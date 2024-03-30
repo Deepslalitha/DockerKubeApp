@@ -34,7 +34,7 @@ pipeline {
 
     stage('Cloning Git') {
       steps {
-        git([url: 'https://github.com/Deepslalitha/DockerKubeApp.git', branch: 'feature/DevopsAssignment'])
+        git([url: 'https://github.com/Deepslalitha/DockerKubeApp.git', branch: 'main'])
 
       }
     }
