@@ -6,7 +6,7 @@ pipeline {
         }
     }
     environment {
-        registry = "deepthylalithatech/mydemoapp"D
+        registry = "deepthylalithatech/mydemoapp"
         registryCredential = 'dockerhubcredentials'
         dockerImage = ''
     }
