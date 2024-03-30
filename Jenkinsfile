@@ -69,7 +69,7 @@ pipeline {
            }
           stage("kubernetes deployment"){
           steps{
-                sh 'kubectl apply -f kdeploy-to-minikube.yml'
+                sh 'kubectl apply -f deploy-to-minikube.yml'
               }
             }
 
