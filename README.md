@@ -4,7 +4,7 @@ This Repo is for setting up a CI-CD pipeline
 3. Kube deployment and Service files
 4. Jenkins file - That has different stages
 
-         a. Build,
+         a. Build
    
          b. Test
    
