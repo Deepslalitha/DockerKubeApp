@@ -67,7 +67,11 @@ pipeline {
        	        echo 'Push Image Completed'
              }
            }
-
+          stage("kubernetes deployment"){
+          steps{
+                sh 'kubectl apply -f kdeploy-to-minikube.yml'
+              }
+            }
 
     }//stages
 
