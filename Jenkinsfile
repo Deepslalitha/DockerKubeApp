@@ -31,14 +31,14 @@ pipeline {
                 }
             }
 
-    stage('Cloning Git') {
-      steps {
-        git([url: 'https://github.com/Deepslalitha/DockerKubeApp.git', branch: 'main'])
+        stage('Cloning Git') {
+          steps {
+            git([url: 'https://github.com/Deepslalitha/DockerKubeApp.git', branch: 'main'])
 
-      }
-    }
+          }
+        }
 
-     stage('Build Docker Image') {
+        stage('Build Docker Image') {
              steps{
              script {
                         dockerImage = docker.build registry + ":latest"
@@ -71,7 +71,19 @@ pipeline {
           steps{
                 sh 'kubectl apply -f deploy-to-minikube.yaml'
               }
+               echo 'kubernetes deployment Completed'
             }
+
+            stage(" minikube service test"){
+                      steps{
+                               sh 'minikube service list'
+                               sh 'minikube service java-app --url'
+
+                                echo "------------------opening the service------------------"
+                                 sh 'curl $(minikube service java-app --url)'
+
+                          }
+                        }
 
     }//stages
 
