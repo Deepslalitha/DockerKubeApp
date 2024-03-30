@@ -42,37 +42,31 @@ pipeline {
              steps{
              script {
                         dockerImage = docker.build registry + ":latest"
-                          echo 'Build Image Completed'
+
                         }
-            //	dockerImage = docker.build imagename
                echo 'Build Image Completed'
              }
            }
-       /* stage('Login to Docker Hub') {
-             steps{
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                echo 'Login Completed'
-             }
-           }*/
+
         stage('Push Image to Docker Hub') {
              steps{
              script {
-
-                           docker.withRegistry( '', registryCredential ) {
-                           dockerImage.push()
-
-                    }
-
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                   }
+              echo 'Push Image Completed'
                 } 
-       	        echo 'Push Image Completed'
+
              }
            }
-          stage("kubernetes deployment"){
+       stage("kubernetes deployment"){
           steps{
-                sh 'kubectl apply -f deploy-to-minikube.yaml'
-              }
-               echo 'kubernetes deployment Completed'
+
+               sh 'kubectl apply -f deploy-to-minikube.yaml'
+
+              echo 'kubernetes deployment Completed'
             }
+       }
 
             stage(" minikube service test"){
                       steps{
@@ -80,7 +74,7 @@ pipeline {
                                sh 'minikube service java-app --url'
 
                                 echo "------------------opening the service------------------"
-                                 sh 'curl $(minikube service java-app --url)'
+                                sh 'curl $(minikube service java-app --url)'
 
                           }
                         }
