@@ -47,13 +47,16 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
       
 **Setting up an AWS Instance**    
 
-        The security group of the instance is updated to add an  CUSTOM TCP inbound rule .
-        Add  Custom TCP Port 8080, so that jenkins can be accessed using public IP address .
-       if you do not add this port then you will not be able to access Jenkins using the public IP address of the AWS EC2 instance.
+     An AWS instance was set up to be used as the Jenkins server. An instance with type as T2 Medium was created with storage as 25 GB.
+     since Minikube needed about 2 CPUs and 20 GB memory.
 
-       The pem file having key-pair is downloaded to the local system so that the instance can be accessed using ssh from powershell.
-       The pem file is naamed ad HadoopLab.pem (ec2 is being used for hadoop labs s well, so I maintain a pem for connecting to the instances).
-       ssh -i "HadoopLab.pem"  ubuntu@ec2-65-2-125-60.ap-south-1.compute.amazonaws.com.
+     The security group of the instance is updated to add an  CUSTOM TCP inbound rule .
+     Add  Custom TCP Port 8080, so that jenkins can be accessed using public IP address .
+     if you do not add this port then you will not be able to access Jenkins using the public IP address of the AWS EC2 instance.
+
+     The pem file having key-pair is downloaded to the local system so that the instance can be accessed using ssh from powershell.
+     The pem file is naamed ad HadoopLab.pem (ec2 is being used for hadoop labs s well, so I maintain a pem for connecting to the instances).
+     ssh -i "HadoopLab.pem"  ubuntu@ec2-65-2-125-60.ap-south-1.compute.amazonaws.com.
 
  **Install JDK in the instance**
           
