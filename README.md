@@ -55,7 +55,7 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
      if you do not add this port then you will not be able to access Jenkins using the public IP address of the AWS EC2 instance.
 
      The pem file having key-pair is downloaded to the local system so that the instance can be accessed using ssh from powershell.
-     The pem file is naamed ad HadoopLab.pem (ec2 is being used for hadoop labs s well, so I maintain a pem for connecting to the instances).
+     The pem file is naamed as HadoopLab.pem (ec2 is being used for hadoop labs s well, so I maintain a pem for connecting to the instances).
      ssh -i "HadoopLab.pem"  ubuntu@ec2-65-2-125-60.ap-south-1.compute.amazonaws.com.
 
  **Install JDK in the instance**
@@ -89,7 +89,7 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
 
 **Install and set Up Docker**
 
-        The docker installation is  done by the Jenkins user as it has root user privileges.
+        The docker installation is  done as the Jenkins user as it has root user privileges.
         sudo apt install docker.io
         Run  docker --version o to see whether docker is installed
         Add Jenkins user to the Docker group -
@@ -108,9 +108,11 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
 
 **Install and set up minikube**
 
-      Minikube is installed on the ec2 insatnce ( User should be jenkins so that seamlessly our Docker pipeline can connect to mini kube clusters without the kubeconfig                 configurations from jenkins).
+      Minikube is installed on the ec2 insatnce ( User should be jenkins so that seamlessly our Docker pipeline can
+      connect to mini kube clusters without the kubeconfig configurations from jenkins).
          
-      curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+      curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && 
+      chmod +x minikube && sudo mv minikube /usr/local/bin/
       minikube status
       kubectl cluster-info
 
@@ -130,7 +132,8 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
   
      Since Jenkins pipeline has to push images to my dockerhub reop, configure the credentials in jenkins.
      In DockerHub ,  an access token is configured to be used for Jenkins .
-     Go to Manage Jenkins — — — — — -> Credentials — — — -> domains (global) — — — →Add Credentials — — — → Insert username and accesstoken
+     Go to 
+      Manage Jenkins — — — — — -> Credentials — — — -> domains (global) — — — →Add Credentials — — — → Insert username and accesstoken
      of docker hub username inside username section and password  section . 
      In the ID section use any key. I gave 'dockerhubcredentials' that is referred in the jenkins file .
      Since Git Hub repo is public, the Git hub creadenetials is not configured.
@@ -154,17 +157,20 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
              
 
 **Docker and Jenkin Files**
+    
      Docker that is used to create an image is at -https://github.com/Deepslalitha/DockerKubeApp/blob/main/Dockerfile
      Jenkinsfile used to cretae different stages in piplein is at https://github.com/Deepslalitha/DockerKubeApp/blob/main/Jenkinsfile
      
      Screenshots of pipeline execution is at https://github.com/Deepslalitha/DockerKubeApp/blob/main/Assignment.docx
 	
-*********************************************************************************************************************************************************************
+*********************************************************************************************************************************************************************************
 
 **Monitroing**
 
    AWS cloud watch can be used to monitor how the system is behaving. Alerts can be cretaed for criteria like CPU utilization
    exceeding a configured value.
+   
+***********************************************************************************************************************************************************************************
 
 **GitHub WorkFlows**
 
