@@ -37,33 +37,30 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
 
  **Spring Boot App**
  
-       For testing CI /CD flow, a spring boot app is build that has a static API which will return a text.
+       For testing CI /CD flow, a spring boot app is built that has a static API which will return a text.
        The APP is build with JDK -11 and Spring Boot.
        The Class can be found at
          https://github.com/Deepslalitha/DockerKubeApp/blob/main/src/main/java/com/example/demo/DemoController.java.
 
-       For carrying out this activity, I have made use of AWS ec2 instance  (Ubuntu) with 25 GB volume . The instance
-       is of type medium as minikube installation required 20GB of free space and min 2 CPUs.
-      
+           
 **Set up an AWS Instance**    
 
-     An AWS instance was set up to be used as the Jenkins server. An instance with type as T2 Medium was created with storage as 25 GB.
-     since Minikube needed about 2 CPUs and 20 GB memory.
+     An AWS instance is set up to be used as the Jenkins server. An instance with type as T2 Medium is created with storage as 25 GB.
+     since Minikube needs about 2 CPUs and 20 GB memory.
 
      The security group of the instance is updated to add an  CUSTOM TCP inbound rule .
      Add  Custom TCP Port 8080, so that jenkins can be accessed using public IP address .
      if you do not add this port then you will not be able to access Jenkins using the public IP address of the AWS EC2 instance.
 
      The pem file having key-pair is downloaded to the local system so that the instance can be accessed using ssh from powershell.
-     The pem file is naamed as HadoopLab.pem (ec2 is being used for hadoop labs s well, so I maintain a pem for connecting to the instances).
-     ssh -i "HadoopLab.pem"  ubuntu@ec2-65-2-125-60.ap-south-1.compute.amazonaws.com.
+     eg - ssh -i "Jenkins.pem"  ubuntu@ec2-65-2-125-60.ap-south-1.compute.amazonaws.com.
 
  **Install JDK in the instance**
           
-       From the local sysytem, using ssh connect to the ec2 instance and execute the below steps as java was not pre installed in the instance.
+       From the local sytem, using ssh --> connect to the ec2 instance and execute the below steps as java is not pre installed in the instance.
        sudo apt-get update
        sudo apt install openjdk-11-jre-headless
-       Executing  java -version should give openjdk version "11.0.11" 2024-03-24.
+       Executing  java -version should give 'openjdk version "11.0.11" 2024-03-24'.
 
 **Install and set up Jenkins**
     
@@ -72,7 +69,8 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
         sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
         sudo apt  update
         sudo apt install jenkins
-        Check whether jenkins is installed
+	
+        Check whether jenkins is installed:
         sudo service jenkins status
 
         After installing Jenkins, it can be  accessed from your local  system by giving the publicIp:8080.
@@ -92,7 +90,8 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
         The docker installation is  done as the Jenkins user as it has root user privileges.
         sudo apt install docker.io
         Run  docker --version o to see whether docker is installed
-        Add Jenkins user to the Docker group -
+        
+	Add Jenkins user to the Docker group -
         Jenkins will be accessing the Docker for building  Docker images,so Jenkins user should be added to the docker group by below command:
         sudo usermod -aG docker jenkins
    
@@ -108,7 +107,7 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
 
 **Install and set up minikube**
 
-      Minikube is installed on the ec2 insatnce ( User should be jenkins so that seamlessly our Docker pipeline can
+      Minikube is installed on the ec2 insatnce ( User should be jenkins so that seamlessly our Jenkins pipeline can
       connect to mini kube clusters without the kubeconfig configurations from jenkins).
          
       curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && 
@@ -130,31 +129,33 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
    
 **Add DockerHub Credentails in jenkins**
   
-     Since Jenkins pipeline has to push images to my dockerhub reop, configure the credentials in jenkins.
-     In DockerHub ,  an access token is configured to be used for Jenkins .
-     Go to 
+     Since Jenkins pipeline has to push images to my dockerhub repo, configure dockerhub credentials in jenkins.
+     In DockerHub ,  an access token is created to be used for Jenkins .
+     From Jenkins : Go to 
       Manage Jenkins — — — — — -> Credentials — — — -> domains (global) — — — →Add Credentials — — — → Insert username and accesstoken
-     of docker hub username inside username section and password  section . 
+     Add docker hub username in username section and access token in  password  section . 
      In the ID section use any key. I gave 'dockerhubcredentials' that is referred in the jenkins file .
-     Since Git Hub repo is public, the Git hub creadenetials is not configured.
+     Since Git Hub repo is public, the Git hub credentials is not configured.
 
 **Create a Pipeline**
 
      A pipeline named 'DevOps Assignement Pipeline' is created in jenkins to use the JenkinsFile script from the Git Repo.
-    'Pipeline Script from SCM' is selected. Git is given as SCM . Repository and branch are given in the pipeline .
-     The script path  ' jenkinsfile' is also given so that  the script can be executed form the Jenkinsfile.
-             
+     Jenkins stages are included in the pipeline script named jenkinsfile and is available in git repo.
     
+    'Pipeline Script from SCM' is selected from Jenkins Configuration. Git is given as SCM . 
+     Repository and branch are given in the pipeline .
+     The script path ' jenkinsfile' is also given so that  the same from git repo can be executed.
+       
 **Configure Webhook in Git hub**
 
       Go to GitHub -> Settings -> WebHooks ->Add webhook
       Payload URL : http://ec2-**-***-***-***.ap-south-1.compute.amazonaws.com:8080/github-webhook/
       Connection Type: application/json
-      Check 'Just the Push event'
+      Check 'Just the Push event'.
 
 **Configure Jenkins to Run pipeline whenever a commit is made to repo (GitScm Polling)**
 
-      Check the GitScm polling from Configure-> General
+      Check the GitScm polling from Configure-> General.
 
 
 **Docker and Jenkin Files**
@@ -166,9 +167,9 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
 	
 *********************************************************************************************************************************************************************************
 
-**Monitroing**
+**Monitoring**
 
-   AWS cloud watch can be used to monitor how the system is behaving. Alerts can be cretaed for criteria like CPU utilization
+   AWS cloud watch can be used to monitor how the system behaves post deployment. Alerts can be created for criteria like CPU utilization
    exceeding a configured value.
    
 ***********************************************************************************************************************************************************************************
