@@ -154,7 +154,7 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
      Docker that is used to create an image is at -https://github.com/Deepslalitha/DockerKubeApp/blob/main/Dockerfile
      Jenkinsfile used to cretae different stages in piplein is at https://github.com/Deepslalitha/DockerKubeApp/blob/main/Jenkinsfile
      
-     Screenshots of pipeline execution is at
+     Screenshots of pipeline execution is at https://github.com/Deepslalitha/DockerKubeApp/blob/main/Assignment.docx
 	
 *********************************************************************************************************************************************************************
 
@@ -166,8 +166,8 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
 **GitHub WorkFlows**
 
     A git hub workflow file si also available that makes use of git hub actions to build, push to docker and deploy to minikube .
-    https://github.com/Deepslalitha/DockerKubeApp/blob/main/.github/workflows/dockerBuildAndPush.yml
+    https://github.com/Deepslalitha/DockerKubeApp/blob/main/.github/workflows/dockerBuildAndPush.yml.
 
-      .  
+      
       
             
