@@ -45,7 +45,7 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
        For carrying out this activity, I have made use of AWS ec2 instance  (Ubuntu) with 25 GB volume . The instance
        is of type medium as minikube installation required 20GB of free space and min 2 CPUs.
       
-**Setting up an AWS Instance**    
+**Set up an AWS Instance**    
 
      An AWS instance was set up to be used as the Jenkins server. An instance with type as T2 Medium was created with storage as 25 GB.
      since Minikube needed about 2 CPUs and 20 GB memory.
@@ -75,17 +75,17 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
         Check whether jenkins is installed
         sudo service jenkins status
 
-         After installing Jenkins, it can be  accessed from your local  system by giving the publicIp:8080.
-         For eg
-         http://ec2-***-***-**.ap-south-1.compute.amazonaws.com:8080/
-         Log in to Jenkins by getting the initial password and install the default plugins.
-         Create an admin user
+        After installing Jenkins, it can be  accessed from your local  system by giving the publicIp:8080.
+        For eg
+        http://ec2-***-***-**.ap-south-1.compute.amazonaws.com:8080/
+        Log in to Jenkins by getting the initial password and install the default plugins.
+        Create an admin user
 
-         Now , go to the ec2 instance and assign admin privileges to jenkins user
-         sudo vi /etc/sudoers 
-         The following line needs to be added at the end:
-         jenkins ALL=(ALL) NOPASSWD: ALL . Save the file.
-         Now we can use Jenkins as root user and for that run the following command --- sudo su - jenkins  
+        Now , go to the ec2 instance and assign admin privileges to jenkins user
+        sudo vi /etc/sudoers 
+        The following line needs to be added at the end:
+        jenkins ALL=(ALL) NOPASSWD: ALL . Save the file.
+        Now we can use Jenkins as root user and for that run the following command --- sudo su - jenkins  
 
 **Install and set Up Docker**
 
