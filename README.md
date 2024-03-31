@@ -31,9 +31,9 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
 8. Configure Docker plugins in jenkins.
 9. Configure Kubernetes Plugin in jenkins.
 10. Add DockerHub Credentails in jenkins.
-11. Configure Webhook in Git hub.
-12. Configure Jenkins to Run pipeline whenever a commit is made to repo (GitScm Polling).
-13. Create a pipeline.
+11. Create a pipeline.
+12. Configure Webhook in Git hub.
+13. Configure Jenkins to run pipeline whenever a commit is made to repo (GitScm Polling).
 
  **Spring Boot App**
  
@@ -137,7 +137,14 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
      of docker hub username inside username section and password  section . 
      In the ID section use any key. I gave 'dockerhubcredentials' that is referred in the jenkins file .
      Since Git Hub repo is public, the Git hub creadenetials is not configured.
-     
+
+**Create a Pipeline**
+
+     A pipeline named 'DevOps Assignement Pipeline' is created in jenkins to use the JenkinsFile script from the Git Repo.
+    'Pipeline Script from SCM' is selected. Git is given as SCM . Repository and branch are given in the pipeline .
+     The script path  ' jenkinsfile' is also given so that  the script can be executed form the Jenkinsfile.
+             
+    
 **Configure Webhook in Git hub**
 
       Go to GitHub -> Settings -> WebHooks ->Add webhook
@@ -149,12 +156,6 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
 
       Check the GitScm polling from Configure-> General
 
-**Create a Pipeline**
-
-     A pipeline named 'DevOps Assignement Pipeline' is created in jenkins to use the JenkinsFile script from the Git Repo.
-    'Pipeline Script from SCM' is selected. Git is given as SCM . Repository and branch are given in the pipeline .
-     The script path  ' jenkinsfile' is also given so that  the script can be executed form the Jenkinsfile.
-             
 
 **Docker and Jenkin Files**
     
