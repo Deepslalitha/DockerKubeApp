@@ -21,8 +21,8 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
 
 **CONFIGURATION**
 
-1. Setting up a static API with Spring Boot for testing CI/CD.
-2. Setting up an AWS Instance.
+1. Set up a static API with Spring Boot for testing CI/CD.
+2. Set up an AWS Instance.
 3. Install JDK in the instance.
 4. Install and set up Jenkins.
 5. Install and set up Docker.
