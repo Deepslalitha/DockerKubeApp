@@ -174,8 +174,11 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
 
 **GitHub WorkFlows**
 
-    A git hub workflow file si also available that makes use of git hub actions to build, push to docker and deploy to minikube .
+    A git hub workflow file is also available that makes use of git hub actions to build,
+    push to docker and deploy to minikube cluster .
+    
     https://github.com/Deepslalitha/DockerKubeApp/blob/main/.github/workflows/dockerBuildAndPush.yml.
+    Workflow Actions : https://github.com/Deepslalitha/DockerKubeApp/actions
 
       
       
