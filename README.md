@@ -31,6 +31,7 @@ This Repo is for setting up a CI-CD pipeline
 10. Add DockerHub Credentails in jenkins
 11. Configure Webhook in Git hub
 12. Configure Jenkins to Run pipeline whenever a commit is made to repo (GitScm Polling)
+13. Create a pipeline.
    
 
 1. Spring Boot App
@@ -139,6 +140,9 @@ Screenshots of pipeline execution is at
 **Monitroing**
 AWS clpud watch can be used to monitor how the system is behaving. Alerts can be cretaed for criteria like CPU utilization exceeding a configured value.
 
+**GitHub WorkFlows**
+A git hub workflow file si also available that makes use of git hub actions to build, push to docker and deploy to minikube .
+https://github.com/Deepslalitha/DockerKubeApp/blob/main/.github/workflows/dockerBuildAndPush.yml
 
       .  
       
