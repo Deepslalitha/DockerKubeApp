@@ -1,6 +1,6 @@
 This Repo is for setting up a CI-CD pipeline for a simple API.
 
-1. A static API build in Spring Boot
+1. A static API built in Spring Boot
 2. Docker File - To create an image
 3. Kube deployment and Service files
 4. Jenkins file - That has different stages
