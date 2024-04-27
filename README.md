@@ -132,14 +132,16 @@ This Repo is for setting up a CI-CD pipeline for a simple API.
      Since Jenkins pipeline has to push images to my dockerhub repo, configure dockerhub credentials in jenkins.
      In DockerHub ,  an access token is created to be used for Jenkins .
      From Jenkins : Go to 
-      Manage Jenkins — — — — — -> Credentials — — — -> domains (global) — — — →Add Credentials — — — → Insert username and accesstoken
+      Manage Jenkins — — — — — -> Credentials — — — -> domains (global) — — — →Add Credentials — — — → Insert 
+      username and accesstoken
      Add docker hub username in username section and access token in  password  section . 
      In the ID section use any key. I gave 'dockerhubcredentials' that is referred in the jenkins file .
      Since Git Hub repo is public, the Git hub credentials is not configured.
 
 **Create a Pipeline**
 
-     A pipeline named 'DevOps Assignement Pipeline' is created in jenkins to use the JenkinsFile script from the Git Repo.
+     A pipeline named 'DevOps Assignement Pipeline' is created in jenkins to use the JenkinsFile script from 
+     the Git Repo.
      Jenkins stages are included in the pipeline script named jenkinsfile and is available in git repo.
     
     'Pipeline Script from SCM' is selected from Jenkins Configuration. Git is given as SCM . 
